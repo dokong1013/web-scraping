@@ -53,8 +53,7 @@ os.mkdir("image")
 
 
 # 현재 insta라는 변수 안에는 같은 계위의 태그들이 리스트로 모여있음, 리스트 원소? 하나 당 사진 하나씩 가져오게 되는 것
-n =1
-for i in insta: # 겁나면 insta[:3] 등으로 몇개씩만 테스트하면서 돌려보기
+for n, i in enumerate(insta,start=1): # 겁나면 insta[:3] 등으로 몇개씩만 테스트하면서 돌려보기
     print('https://www.instagram.com'+i.a["href"]) # href에는 목표하는 그 이미지가 있는 포스팅으로 갈 수 있게 해주는 상대주소가 들어있음(그냥 뭔가를 눈으로 보려고 하는 작업)
     imgUrl=i.select_one('._aagv').img['src'] # 원하는 img를 포함하는 윗 태그(=_aagv를 클래스이름으로 같는 태그)의 밑에 img에 'src'링크를 imgURL(리스트)로 가져와라
     ### 밑에 네 줄은 그냥 킵해뒀다가 유알엘 받은 것들 저장하는 코드로 기계적으로 써야할 듯
@@ -66,7 +65,6 @@ for i in insta: # 겁나면 insta[:3] 등으로 몇개씩만 테스트하면서 
     ### 이게 뭘까... 밑으로 해도 똑같이 돌아감
     ### img = urlopen(imgUrl).read()
     ### open('./image/'+ plusUrl + str(n)+'.jpg','wb').write(img)
-    n += 1
     print(imgUrl)
     print()
     ### 결과로 [원포스팅주소,이미지소스유알엘, 빈줄]이 한 세트로 21개 print 될 것임
